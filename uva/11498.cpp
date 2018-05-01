@@ -1,4 +1,5 @@
-//UVA11498
+// 11498 Division of Nlogonia
+
 #include <iostream>
 #include <string>
 

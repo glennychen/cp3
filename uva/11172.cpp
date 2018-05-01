@@ -1,4 +1,4 @@
-//uva11172
+// 11172 Relational Operator
 
 #include <iostream>
 
