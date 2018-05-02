@@ -26,7 +26,7 @@ bool is_jolly(vector<int> &v) {
   //    }
   for (int i = 0; i < v.size() - 1; ++i) {
     int diff = abs(v[i] - v[i + 1]);
-    //if (diff < 1 || diff > v.size() || v_diff[diff-1] == true ) { // incorrect
+    //if (diff < 1 || diff > v.size() || v_diff[diff-1] == true ) { // incorrect diff > v.size() means diff could == n, not correct. has to be n-1
 
     //  1 through size-1
     if (diff == 0 || diff > v.size()-1 || v_diff[diff] == true ) {
