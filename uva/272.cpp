@@ -19,8 +19,11 @@ int main() {
 	cout << line[i];
       }
     }
-    cout << endl;
-    //        size_t found = line.find("\"");
+    if (!cin.eof()) {
+      // assuming there is a new line form the input, how to fix this?
+      cout << endl;
+    }
+    //        string::size_type found = line.find("\""); // p.657 STL reference
     //        if (found != string::npos) {
     //            if(first_quote) {
     //                line[found] = '`';
