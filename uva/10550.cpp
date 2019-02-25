@@ -5,12 +5,9 @@ using namespace std;
 
 int main()
 {
-  // 360 / 40 = 9
-  // 2full turns, 360*2
-  // stop at the first,
-
   //int const nine_degree = 360/40;
   int const UNIT = 1;
+  int const DEGREE_PER_UNIT = 360/40;
   int const ONE_TURN = 40;
   int start, a, b, c, total;
 
@@ -38,18 +35,20 @@ int main()
     } else if ( b == start) {
       // impossible, consecutive numbers are unique
     } else {
-      total += ONE_TURN - (b-start);
+      // total += ONE_TURN - (b-start); correct?
+      total += ONE_TURN - (start - b);
     }
 
     // Step 3, clockwise until the  3rd number
     start = b;
-    if (star > c) {
+    if (start > c) {
       total += start - c;
     } else if (c == start) {
       // impossible
     } else {
       total += c - start;
     }
-      
-  }  
+    cout << total*DEGREE_PER_UNIT << endl;
+  }
+
 }
