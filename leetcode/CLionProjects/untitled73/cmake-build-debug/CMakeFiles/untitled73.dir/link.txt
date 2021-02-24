@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/untitled73.dir/main.cpp.o  -o untitled73 

@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/untitled40.dir/main.cpp.o  -o untitled40 

@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/untitled54.dir/main.cpp.o CMakeFiles/untitled54.dir/test.cpp.o  -o untitled54 
