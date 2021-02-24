@@ -21,3 +21,6 @@ https://github.com/jackfrued/Python-100-Days
 TRENDING
 HelloGitHub: https://github.com/521xueweihan/HelloGitHub
 https://github.com/trending/c++
+
+Training:
+https://github.com/liuchuo/PAT
