@@ -17,18 +17,19 @@ public:
         ListNode* current = head;
         ListNode* before_delete = head;
         while (current != nullptr) {
-            while(m-- > 0){
+            int keep = m;
+            int remove = n;
+            while(keep-- > 0){ //remember keep--, is keep, then keep = keep -1, need to reset keep or infinite loop
                 if (current->next == nullptr) return head;
                 before_delete = current;
                 current = current->next;
             }
-            while(n-- > 0 && current != nullptr){
+            while(remove-- > 0 && current != nullptr){
                 ListNode* to_be_deleted = current;
                 current = current->next;
                 delete to_be_deleted;
             }
             before_delete->next = current;
-            current = current->next;
         }
         return head;
     }
