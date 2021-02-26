@@ -13,19 +13,18 @@ public:
 
         for(const auto& elem:moves){
             switch(elem) {
-                case 'U':
+            case 'U':
                 ++updown;
                 break;
-                case 'D':
+            case 'D':
                 --updown;
                 break;
             case 'R':
                 ++leftright;
-            break;
-                case 'L':
+                break;
+            case 'L':
                 --leftright;
                 break;
-
             }
         }
         return updown == 0 && leftright==0;
