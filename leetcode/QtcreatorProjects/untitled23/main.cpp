@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//C++11 local static variable can be initialized, lasting life time of the program, and thread-safe (initilized once?)
 class Logger {
 
 public:
