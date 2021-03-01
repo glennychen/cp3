@@ -2,8 +2,24 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <utility>
 using namespace std;
 
+
+class Solution {
+public:
+    int heightChecker(vector<int>& heights) {
+        vector<int> h2 = heights;
+        sort(h2.begin(),h2.end());
+        int number_moves=0;
+        for(auto[iter1, iter2]=pair(heights.begin(), h2.begin()); iter1<heights.end();++iter1,++iter2){
+            if (*iter1!=*iter2) ++number_moves;
+        }
+        return number_moves;
+    }
+};
+
+namespace check_sort_pred{
 class Solution {
 public:
     int heightChecker(vector<int>& heights) {
@@ -15,6 +31,7 @@ public:
         return swap_count;
     }
 };
+}
 
 int main()
 {

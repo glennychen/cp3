@@ -29,8 +29,8 @@ public:
           vector<int> output;
           int count=0;
           for(const auto& [key,value]:solider_count_index){
-              output.push_back(key);
-              if(count==k) break;
+              output.push_back(value);
+              if(count+1==k) break;
               ++count;
           }
           return output;
