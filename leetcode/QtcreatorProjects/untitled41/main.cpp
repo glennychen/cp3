@@ -30,10 +30,9 @@ public:
         q.push_back(root);
 
         // Run a modified BFS traversal for our binary tree
-
-
         while(!q.empty()){
             vector<TreeNode*> level_nodes;
+            cout << level_nodes.size();
             for(const auto& elem:q){
                 if(elem->left)
                     level_nodes.push_back(elem->left);
@@ -50,7 +49,7 @@ public:
                      q.push_back(elem);
                 }
             }
-            level_nodes.clear();
+            level_nodes.clear(); //no need to clear because it will re-initialize each loop, but clearer intention
 
             average.push_back(sum/size);
         }
