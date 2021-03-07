@@ -8,6 +8,7 @@
 
 using namespace std;
 
+
 template<typename T>
 class TrieNode{
 public:
@@ -40,14 +41,14 @@ public:
         return new_substring;
     }
 
-    unique_ptr<TrieNode<T>> search(string word)
+    TrieNode<T>* search(string word)
     {
-        unique_ptr<TrieNode<T>> current=root.get();
+        TrieNode<T>* current=root.get();
         for(const auto& c:word){
             if(current->children.find(c)==current->children.end()){
                 return nullptr;
             } else {
-                current=current->children[c];
+                current=current->children[c].get();
             }
         }
         return current;
@@ -57,6 +58,10 @@ private:
 };
 
 class Solution {
+/*
+Runtime: 184 ms
+Memory Usage: 71.5 MB
+*/
 public:
     int minimumLengthEncoding(vector<string>& words) {
         int res=0;
@@ -76,11 +81,17 @@ public:
                 res+=word.size()+1;
             }
         }
+        trie.search("time"); //just tseting
         return res;
     }
 };
 
 namespace n_square_Solution{
+
+/*
+ * Runtime: 1344 ms
+Memory Usage: 13.5 MB
+*/
 class Solution {
 public:
     int minimumLengthEncoding(vector<string>& words) {
