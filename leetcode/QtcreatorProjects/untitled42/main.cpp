@@ -12,37 +12,37 @@ template<typename T>
 class TrieNode{
 public:
     TrieNode() = default;
-    TrieNode(T val):val(val){};
+    TrieNode(T val):val(val){}
 
     T val;
     bool leaf;
-    unordered_map<T, unique_ptr<TrieNode<T>>> children;
+    unordered_map<T, shared_ptr<TrieNode<T>>> children;
 };
 
 template<typename T>
 class Trie{
 public:
-    Trie():root{make_unique<TrieNode<T>>()} {}
+    Trie():root{make_shared<TrieNode<T>>()} {}
 
     bool insert(string word)
     {
         bool new_substring=false;
-        TrieNode<T>* current=root.get();
+        shared_ptr<TrieNode<T>> current=root;
         for(const auto& c:word){
             if(current->children.find(c)==current->children.end()){
-                current->children[c]= make_unique<TrieNode<T>>(c);
+                current->children[c]= make_shared<TrieNode<T>>(c);
                 new_substring=true;
             }
-            current = current->children[c].get();
+            current = current->children[c];
         }
         current->leaf=true;
 
         return new_substring;
     }
 
-    unique_ptr<TrieNode<T>> search(string word)
+    shared_ptr<TrieNode<T>> search(string word)
     {
-        unique_ptr<TrieNode<T>> current=root.get();
+        shared_ptr<TrieNode<T>> current=root;
         for(const auto& c:word){
             if(current->children.find(c)==current->children.end()){
                 return nullptr;
@@ -53,24 +53,21 @@ public:
         return current;
     }
 private:
-    unique_ptr<TrieNode<T>> root;
+    shared_ptr<TrieNode<T>> root;
 };
 
 class Solution {
 public:
     int minimumLengthEncoding(vector<string>& words) {
         int res=0;
-        sort(words.begin(), words.end());
-        auto last = unique(words.begin(), words.end());
-        words.erase(last, words.end()); //no need to keep duplicate
         sort(words.begin(), words.end(),[](const auto& a, const auto& b){
-          return a.size()>b.size(); //decreasing order
+          return a.size()>b.size();
         });
 
         Trie<char> trie;
         for(const auto& word:words){
             string s=word;
-            reverse(s.begin(), s.end()); //check subfix
+            reverse(s.begin(), s.end());
             bool new_substring = trie.insert(s);
             if(new_substring){
                 res+=word.size()+1;
