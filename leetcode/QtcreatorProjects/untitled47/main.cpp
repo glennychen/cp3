@@ -26,6 +26,32 @@ struct A {
     array<int, N> arr;
 };
 
+namespace really_nice{
+ bool cpp_check_palindrom(string s){
+ if( equal(s.begin(), s.begin() + s.size()/2, s.rbegin()))
+     return true;
+ else
+     return false;
+  }
+}
+
+/*
+ *
+auto dist    = std::distance(first, last);
+auto halfway = first;
+std::advance(halfway, dist/2);
+return std::equal(first, halfway, std::reverse_iterator(last), comp);
+*/
+
+//string input;
+
+//cout << "Please enter a string: ";
+//cin >> input;
+
+//if (input == string(input.rbegin(), input.rend())) {
+//    cout << input << " is a palindrome";
+//}
+
 class Solution {
 public:
     bool is69P(string num){
