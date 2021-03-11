@@ -43,9 +43,4 @@ TEST_CASE( "Integer to Roman") {
     vector<int> v4{10,100,1000,10000};
     vector<int> a4{10,100,10000,1000};
     REQUIRE( sortByBits(v4) == a4  );
-
-
-
-
-
 }
