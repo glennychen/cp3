@@ -17,6 +17,7 @@ int maxDepth(TreeNode* root) {
         return 0;
     int id=root->val;
     int i,j;
+    i=j=0;
     if(root->left){
         i=maxDepth(root->left);
     }
@@ -24,7 +25,7 @@ int maxDepth(TreeNode* root) {
         j=maxDepth(root->right);
     }
     //POST-order traversal, root to report last
-    return max(i,j);
+    return 1+max(i,j);
 }
 
 int main()
