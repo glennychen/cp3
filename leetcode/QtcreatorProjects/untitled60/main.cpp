@@ -14,11 +14,12 @@ int fib(int n)
     lookup[0]=0;
     lookup[1]=1;
 
-    for(int i=2;i<n;++i){
+    for(int i=2;i<=n;++i){
         lookup[i]=lookup[i-1]+lookup[i-2];
     }
-    return lookup[n-1];
+    return lookup[n];
 }
+
 int fib_recursive(int n) {
     if (n==0)
         return 0;
