@@ -9,7 +9,7 @@ class UndergroundSystem {
 public:
     unordered_map<int, pair<string,int>> map_ckin; //id, station, check-in time
     unordered_map<string, pair<int,int>> map_sum;  //station-in, station-out, pair total, people count
-
+    //SPACE COMPLEXITY IS N^2  (nx(n-1)) so N^2
     UndergroundSystem() {
 
     }
