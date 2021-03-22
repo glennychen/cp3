@@ -20,7 +20,7 @@ public:
             int aa=iter1!=a.rend()?*iter1-'0':0; //review
             int bb=iter2!=b.rend()?*iter2-'0':0; //review
             sum=carry?aa+bb+1:aa+bb;
-            res.push_back(sum%=2);
+            res.push_back(sum%2);
             carry=sum/2;
 
             if(iter1!=a.rend())
