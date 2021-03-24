@@ -5,67 +5,100 @@
 #include <unordered_set>
 #include <map>
 #include <set>
+#include <cmath>
 using namespace std;
+
+class Solution_debug {
+public:
+    int threeSumMulti(vector<int>& arr, int target) {
+        sort(arr.begin(), arr.end());
+
+        vector<vector<int>> res;
+        for(int i=0;i<arr.size();++i){
+            twoSum(arr, i, target, res);
+        }
+        cout << "done:" << res.size();
+        int modd=pow(10,9)+7;
+        return res.size()%modd;
+    }
+
+    vector<vector<int>> twoSum(vector<int>& nums, int i, int target, vector<vector<int>>& res) {
+        int low=i+1;
+        int high=nums.size()-1;
+
+        while(low<high){
+            int sum=nums[i]+nums[low]+nums[high];
+            if (sum==target){
+                res.push_back({nums[i],nums[low],nums[high]});//for debugging
+                --high; //better way to do this?
+
+                if(low==high&&nums[low]==nums[low+1]){
+                    low=low+1;
+                    high=nums.size()-1;
+                }
+            } else if(sum>target){
+                --high;
+            } else if(sum<target){
+                ++low;
+                //!!!reset high!!!
+                high=nums.size()-1;
+            }
+        }
+
+        return res;
+    }
+};
 
 class Solution {
 public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        vector<vector<int>> v;
-        if (nums.size()<3){
-            return v;
+    int threeSumMulti(vector<int>& arr, int target) {
+        sort(arr.begin(), arr.end());
+        int count=0;
+
+        for(int i=0;i<arr.size();++i){
+            twoSum(arr, i, target, count);
         }
 
-
-        unordered_map<int, int> lookup;
-        for(const auto& elem:nums){
-            //lookup.insert(elem);
-            ++lookup[elem];
-        }
-
-        map<set<int>,int> um;
-
-        for(auto iter_i=lookup.begin();iter_i!=lookup.end();++iter_i){
-            for(auto iter_j=lookup.begin();
-                iter_j!=lookup.end()/*&&iter_j!=iter_i*/;
-                advance(iter_j,1)){
-
-                if (iter_j->first==iter_i->first && iter_j->second==1){
-                    continue;
-                }
-
-                int fixed=iter_i->first;
-                int first=iter_j->first;
-                int second=-(fixed+first);
-                auto iter=lookup.find(second);
-                if(iter!=lookup.end()){
-                    bool should_insert=false;
-                    if(iter!=iter_i && iter!=iter_j){
-                        should_insert=true;
-                    }else{
-
-                    }
-
-                    if(should_insert){
-                        set<int> s_answer;
-                        s_answer.insert(fixed);
-                        s_answer.insert(first);
-                        s_answer.insert(second);
-                        if (um.find(s_answer)==um.end()){
-                            vector<int> answer={fixed, first, second};
-                            v.push_back(answer);
-                            um[s_answer]=1;
-                        }
-                    }
-                }
-            }
-
-        }
-         return v;
+        int modd=pow(10,9)+7;
+        return count%modd;
     }
- };
+
+    void twoSum(vector<int>& nums, int i, int target, int& count) {
+        int low=i+1;
+        int high=nums.size()-1;
+
+        int current_count=0;
+        while(low<high){
+            int sum=nums[i]+nums[low]+nums[high];
+            if (sum==target){
+                ++current_count;
+                --high; //better way to do this?
+
+                if(low==high&&nums[low]==nums[low+1]){
+//                    low=low+1;
+//                    high=nums.size()-1;
+                    for(int j=1;nums[low]==nums[low+1]&&low+1<nums.size();++j,++low){
+                        current_count+=current_count-1;
+                        ++low;
+                    }
+                }
+            } else if(sum>target){
+                --high;
+            } else if(sum<target){
+                ++low;
+                //!!!reset high!!!
+                high=nums.size()-1;
+            }
+        }
+        count+=current_count;
+    }
+};
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    Solution s;
+    vector<int> v{1,1,2,2,3,3,4,4,5,5};
+    v={1,1,2,2,2,2};
+    s.threeSumMulti(v,5);
     return 0;
 }
