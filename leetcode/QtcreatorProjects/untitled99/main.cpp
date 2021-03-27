@@ -7,7 +7,8 @@ using namespace std;
 class Solution {
 public:
     vector<vector<int>> pacificAtlantic(vector<vector<int>>& matrix) {
-
+        //for each point
+        //  left||top && right||down
     }
 };
 
