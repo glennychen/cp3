@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/glenn/src/cp3/leetcode/QtcreatorProjects/1507/main.cpp
+iostream
+-
+vector
+-
+unordered_map
+-
+
