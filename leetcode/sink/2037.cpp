@@ -40,8 +40,8 @@ public:
       return res;
     }
   /*
-    2266
-    1236
+    223  
+    112
    */
 };
 
@@ -49,6 +49,7 @@ int main()
 {
   Solution s;
   vector<string> v{"alice and bob love leetcode", "i think so too", "this is great thanks very much"};
+  s.minMovesToSeat(v,v);
   return 0;
 }
 
