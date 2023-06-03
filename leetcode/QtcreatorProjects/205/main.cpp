@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Solution {
+class Solution {21
 public:
     bool isIsomorphic(string s, string t) {
         unordered_map<char,char> um;
